@@ -1,41 +1,44 @@
-# libigl example project
-[![Build Status](https://travis-ci.org/libigl/libigl-example-project.svg?branch=master)](https://travis-ci.org/libigl/libigl-example-project)
-[![Build status](https://ci.appveyor.com/api/projects/status/libigl/libigl-example-project?svg=true)](https://ci.appveyor.com/project/libigl/libigl-example-project/branch/master)
+# libigl + RectangleBinPack
 
-A blank project example showing how to use libigl and cmake. Feel free and
-encouraged to copy or fork this project as a way of starting a new personal
-project using libigl.
+This project is base on the [libigl-example-project](https://github.com/libigl/libigl-example-project) and uses a sligtly modified(CMake integration) version of https://github.com/juj/RectangleBinPack as a submodule.
+
+## What it does
+
+1) read the 3D model
+2) cut it along the mean X,Y and Z coordinates to have a vector of patches
+3) run LSCM per patch
+4) pack these parameterized patches using [RectangleBinPack](https://github.com/BruegelN/RectangleBinPack)
+
 
 ## See the tutorial first
 
 Then build, run and understand the [libigl
-tutorial](http://libigl.github.io/libigl/tutorial/).
+tutorial](http://libigl.github.io/libigl/tutorial/) and [example project](https://libigl.github.io/example-project/).
 
 ## Dependencies
 
 The only dependencies are stl, eigen, [libigl](http://libigl.github.io/libigl/) and
 the dependencies of the `igl::opengl::glfw::Viewer`.
 
-The cmake build system will attempt to find libigl according to environment variables (e.g., `LIBIGL`) and searching in common desitinations (e.g., `/usr/local/libigl/`). If you haven't installed libigl before, we recommend you to clone a copy of libigl right here:
+[RectangleBinPack with CMake](https://github.com/BruegelN/RectangleBinPack) is included as a submodule
 
-    cd libigl-example-project/
-    git clone https://github.com/libigl/libigl.git
+## Get Started
 
-## Compile
-
-Compile this project using the standard cmake routine:
-
-    mkdir build
-    cd build
-    cmake ..
-    make
+```bash
+git clone --recurse-submodules https://github.com/BruegelN/libigl-RectangleBinPack
+```
+```bash
+cd libigl-RectangleBinPack
+mkdir build
+cd build
+cmake ..
+make
+```
 
 This should find and build the dependencies and create a `example_bin` binary.
+You need a local copy of [libigl](https://github.com/libigl/libigl).
+For futher information on how add libigl see [the documentation of the libigl example project](https://libigl.github.io/example-project/).
 
-## Run
+# Run
 
-From within the `build` directory just issue:
-
-    ./example_bin
-
-A glfw app should launch displaying a 3D cube.
+When execute `./example_bin ../lilium.obj` you can view the n-patch [1-9] by pressing the corresponding number key on your keyboard. Pressing __0__ will show all packed patches. With ' ' (space) you can view the original mesh.
