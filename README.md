@@ -42,3 +42,4 @@ For futher information on how add libigl see [the documentation of the libigl ex
 # Run
 
 When execute `./example_bin ../lilium.obj` you can view the n-patch [1-9] by pressing the corresponding number key on your keyboard. Pressing __0__ will show all packed patches. With ' ' (space) you can view the original mesh.
+![Packing after cuttuing along X,Y,Z mean values and LSCM Parameterization](https://raw.githubusercontent.com/BruegelN/libigl-RectangleBinPack/master/.github/screenshot.png)
